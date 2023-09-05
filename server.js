@@ -10,11 +10,16 @@ const userRouter = require("./routes/userRoutes");
 const frontendRouter = require("./routes/frontendRoutes");
 
 require("dotenv").config();
-setupMongooseConnection();
 app.set('view engine' , 'ejs');
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'))
+app.use(express.static(__dirname + "/public", {
+  index: false, 
+  immutable: true, 
+  cacheControl: true,
+  maxAge: "30d"
+}));
+app.use(express.urlencoded({extended:true}));
 
 //routes
 app.use("/", frontendRouter);
@@ -22,9 +27,10 @@ app.use("/", frontendRouter);
 app.use("/auth", userRouter);
 
 app.get("/admin/dashboard", (req, res) => {
-  res.json({ status: "Welcome LMS Backend Server" });
+  res.render('dashboard/index');
 });
 
+setupMongooseConnection();
 app.listen(PORT, () => {
   console.log(`LMS Backend Server Started : http://localhost:${PORT}`);
 });
