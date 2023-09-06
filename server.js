@@ -33,14 +33,14 @@ app.get("/admin/dashboard", (req, res) => {
     {
       text: "Dashboard",
       link: "./index.html",
-      icon: 'ti ti-layout-dashboard',
-      catergory : "Main"
+      icon: "ti ti-layout-dashboard",
+      catergory: "Main",
     },
     {
       text: "Students",
       link: "./ui-buttons.html",
       icon: "ti ti-article",
-      catergory : "Main"
+      catergory: "Main",
     },
   ];
 
