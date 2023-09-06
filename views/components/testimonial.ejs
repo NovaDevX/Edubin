@@ -1,6 +1,3 @@
-class Testimonial extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
       <section
       id="testimonial"
       class="bg_cover pt-115 pb-115"
@@ -84,8 +81,3 @@ class Testimonial extends HTMLElement {
       </div>
       <!-- container -->
     </section>
-            `;
-  }
-}
-
-customElements.define("nv-testimonial", Testimonial);
