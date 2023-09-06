@@ -10,16 +10,18 @@ const userRouter = require("./routes/userRoutes");
 const frontendRouter = require("./routes/frontendRoutes");
 
 require("dotenv").config();
-app.set('view engine' , 'ejs');
+app.set("view engine", "ejs");
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/public", {
-  index: false, 
-  immutable: true, 
-  cacheControl: true,
-  maxAge: "30d"
-}));
-app.use(express.urlencoded({extended:true}));
+app.use(
+  express.static(__dirname + "/public", {
+    index: false,
+    immutable: true,
+    cacheControl: true,
+    maxAge: "30d",
+  })
+);
+app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/", frontendRouter);
@@ -27,7 +29,22 @@ app.use("/", frontendRouter);
 app.use("/auth", userRouter);
 
 app.get("/admin/dashboard", (req, res) => {
-  res.render('dashboard/index');
+  var menus = [
+    {
+      text: "Dashboard",
+      link: "./index.html",
+      icon: 'ti ti-layout-dashboard',
+      catergory : "Main"
+    },
+    {
+      text: "Students",
+      link: "./ui-buttons.html",
+      icon: "ti ti-article",
+      catergory : "Main"
+    },
+  ];
+
+  res.render("dashboard/index", { menus: menus });
 });
 
 setupMongooseConnection();
