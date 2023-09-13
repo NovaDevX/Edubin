@@ -29,7 +29,7 @@ form.addEventListener("submit", async (event) => {
 
         if (result.role === 0) {
           // Redirect to the admin dashboard
-          window.location.href = "/admin/dashboard";
+          window.location.href = "/admin/";
         } else if (result.role === 1) {
           // Redirect to the regular user dashboard
           window.location.href = "/student/dashboard";

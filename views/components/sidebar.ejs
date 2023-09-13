@@ -12,20 +12,44 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
         <ul id="sidebarnav">
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">Home</span>
-          </li>
-          <% menus.forEach(function(menu){ %>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href=<%= menu.link %> aria-expanded="false">
-                  <span>
-                    <i class="<%= menu.icon %>" ></i>
-                  </span>
-                  <span class="hide-menu"><%= menu.text %></span>
-                </a>
+            <% menus.forEach(function(menu , index) { %>
+              <% if (menu.subMenues) { %>
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href=<%= '#'+index %> data-bs-toggle="collapse" aria-expanded="false">
+                    <span>
+                      <i class="<%= menu.icon %>" ></i>
+                    </span>
+                    <span class="hide-menu"><%= menu.text %></span>
+                  </a>
+    
+    
+                  <ul class="collapse nav flex-column ms-1" id=<%= index %> data-bs-parent="#menu">
+                    <% menu.subMenues.forEach(function(subMenu) { %>
+                      <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" aria-expanded="false">
+                          <span>
+                            <i class="ti ti-control-record" ></i>
+                          </span>
+                          <span class="hide-menu"><%= subMenu %></span>
+                        </a>
+                      </li>
+                  <% }); %>
+                  </ul>
+
               </li>
-            <% }) %>
+              <% } else { %>
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href=<%= menu.link %> aria-expanded="false">
+                    <span>
+                      <i class="<%= menu.icon %>" ></i>
+                    </span>
+                    <span class="hide-menu"><%= menu.text %></span>
+                  </a>
+                </li>
+              <% } %>
+          <% }); %>
+
+            
 
           <!-- <li class="sidebar-item">
             <a class="sidebar-link" href="./index.html" aria-expanded="false">
