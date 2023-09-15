@@ -31,12 +31,11 @@ form.addEventListener("submit", async (event) => {
           // Redirect to the admin dashboard
           window.location.href = "/admin/";
         } else if (result.role === 1) {
-          // Redirect to the regular user dashboard
+          // Redirect to the student dashboard
           window.location.href = "/student/dashboard";
         }
 
         console.log("Access Token:", result.accessToken);
-        // window.location.href = "/admin/dashboard";
       } else {
         // Handle login error
         const errorData = await response.json();
