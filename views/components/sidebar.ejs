@@ -26,11 +26,11 @@
                   <ul class="collapse nav flex-column ms-1" id=<%= index %> data-bs-parent="#menu">
                     <% menu.subMenues.forEach(function(subMenu) { %>
                       <li class="sidebar-item">
-                        <a class="sidebar-link" href="#" aria-expanded="false">
+                        <a class="sidebar-link" href=<%= subMenu.link %> aria-expanded="false">
                           <span>
                             <i class="ti ti-control-play" ></i>
                           </span>
-                          <span class="hide-menu"><%= subMenu %></span>
+                          <span class="hide-menu"><%= subMenu.text %></span>
                         </a>
                       </li>
                   <% }); %>
